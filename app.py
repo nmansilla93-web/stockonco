@@ -51,6 +51,11 @@ def init_db():
         droga TEXT,
         texto TEXT
     )''')
+    for col in ["droga", "texto"]:
+        try:
+            c.execute(f"ALTER TABLE recomendaciones ADD COLUMN {col} TEXT")
+        except Exception:
+            pass
 
     # Usuarios de prueba
     usuarios = [
